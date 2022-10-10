@@ -10,16 +10,14 @@ class MenuBar(Menu):
     def __init__(self, parent):
         super().__init__(parent)
 
-        self.modeType = BooleanVar()
-        self.modeMouse = BooleanVar()
-
-        self.autoMode = StringVar()
-        self.autoMode.set(1)
-
         self.modes = {
             'AutoType': 1,
             'AutoMouse': 2
         }
+
+        self.autoMode = StringVar()
+        self.autoMode.set(self.modes['AutoType'])
+
 
         file = Menu(self, tearoff=False)
         mode = Menu(self, tearoff=False)
@@ -36,12 +34,12 @@ class MenuBar(Menu):
         self.add_cascade(label="Help", menu=help)
 
     def getMode(self):
-        return self.autoMode.get()
+        mode = self.autoMode.get()
+        return mode
 
     def exit(self):
         self.exit
 
     def about(self):
-        # print(self.autoMode.get())
         messagebox.showinfo(
             'PythonGuides', 'Python Guides aims at providing best practical tutorials')

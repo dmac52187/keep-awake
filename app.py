@@ -11,15 +11,18 @@ class App(tk.Tk):
         super().__init__()
 
         # window config
-        self.geometry('300x200')
+        self.geometry('600x400')
         self.title('Keep Awake')
         tk.Grid.columnconfigure(self, 2, weight=1)
 
         # MenuBar
-        self.menuBar = MenuBar(None)
+        self.menuBar = MenuBar(self)
 
         # AutoType instance (widget)
-        self.autoType = AutoType()
+        self.autoType = AutoType(self)
+
+        # AutoMouse instance (widget)
+        self.autoMouse = AutoMouse(self)
 
         # config instance (settings)
         self.settingsConfig = SettingsConfig()
@@ -36,6 +39,7 @@ class App(tk.Tk):
 
 
     # main window functions
+
     def color_on(self):
         self.config(background='red')
 
@@ -43,14 +47,21 @@ class App(tk.Tk):
         self.config(background="SystemButtonFace")
 
     def start(self):
-        # get settings
-        self.autoType.text = self.settingsConfig.getSettings()
-        self.autoType.type = True
-        self.autoType.send_keys()
+        mode = int(self.menuBar.getMode())
+        if mode == 1:
+            # auto type
+            self.autoType.text = self.settingsConfig.getSettings()
+            self.autoType.type = True
+            self.autoType.send_keys()
+        elif mode == 2:
+            # auto mouse
+            self.autoMouse.move = True
+            self.autoMouse.move_mouse()
         self.color_on()
 
     def stop(self):
         self.autoType.type = False
+        self.autoMouse.move = False
         self.color_off()
 
     def open_settings(self):
