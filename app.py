@@ -44,7 +44,8 @@ class App(tk.Tk):
         self.config(background='red')
 
     def color_off(self):
-        self.config(background="SystemButtonFace")
+        self.countLabel.config(background="SystemButtonFace")
+        # self.config(background="")
 
     def start(self):
         mode = int(self.menuBar.getMode())
