@@ -11,7 +11,7 @@ class App(tk.Tk):
         super().__init__()
 
         # window config
-        self.geometry('600x400')
+        self.geometry('800x800')
         self.title('Keep Awake')
         tk.Grid.columnconfigure(self, 2, weight=1)
 
@@ -79,4 +79,6 @@ if __name__ == "__main__":
     app = App()
     app.config(menu=app.menuBar)
     app.protocol("WM_DELETE_WINDOW", app.close)
+    app.lift()
+    app.attributes('-topmost', True)
     app.mainloop()
