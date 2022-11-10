@@ -43,6 +43,7 @@ class AutoType(Frame):
             self.after(self.delayTime, self.send_keys)
         else:
             self.countLabel.config(background="SystemButtonFace")
+            # self.countLabel.config(background="")
 
 
 class AutoMouse(Frame):
