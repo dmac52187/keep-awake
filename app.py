@@ -11,7 +11,7 @@ class App(tk.Tk):
         super().__init__()
 
         # window config
-        self.geometry('2000x800')
+        self.geometry('2000x700')
         self.title('Keep Awake')
         tk.Grid.columnconfigure(self, 2, weight=1)
 
@@ -39,6 +39,9 @@ class App(tk.Tk):
 
         settingsButton = ttk.Button(self, text='Settings', command=self.open_settings)
         settingsButton.pack()
+
+        exitButton = ttk.Button(self, text='Exit', command=self.close)
+        exitButton.pack()
 
 
     # main window functions
