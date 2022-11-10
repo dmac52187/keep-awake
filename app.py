@@ -11,7 +11,7 @@ class App(tk.Tk):
         super().__init__()
 
         # window config
-        self.geometry('800x800')
+        self.geometry('2000x800')
         self.title('Keep Awake')
         tk.Grid.columnconfigure(self, 2, weight=1)
 
@@ -44,7 +44,7 @@ class App(tk.Tk):
         self.config(background='red')
 
     def color_off(self):
-        self.countLabel.config(background="SystemButtonFace")
+        self.config(background="SystemButtonFace")
         # self.config(background="")
 
     def start(self):
