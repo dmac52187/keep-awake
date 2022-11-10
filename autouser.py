@@ -18,6 +18,17 @@ class AutoType(Frame):
         self.entry = Entry(width=15)
         self.entry.pack()
 
+
+    def hide(self):
+        self.Label.pack_forget()
+        self.countLabel.pack_forget()
+        self.entry.pack_forget()
+
+    def show(self):
+        self.Label.pack()
+        self.countLabel.pack()
+        self.entry.pack()
+
     def send_keys(self):
         self.countLabel.config(text=str(self._count))
         self.entry.focus()
@@ -48,6 +59,15 @@ class AutoMouse(Frame):
         self.countLabel = Label(text="0")
         self.countLabel.pack()
 
+
+    def hide(self):
+        self.Label.pack_forget()
+        self.countLabel.pack_forget()
+
+    def show(self):
+        self.Label.pack()
+        self.countLabel.pack()
+    
     def move_mouse(self):
         self.countLabel.config(text=str(self._count))
         if self.move == True:

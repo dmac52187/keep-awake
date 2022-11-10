@@ -15,6 +15,9 @@ class App(tk.Tk):
         self.title('Keep Awake')
         tk.Grid.columnconfigure(self, 2, weight=1)
 
+
+        self.mode = 1
+        
         # MenuBar
         self.menuBar = MenuBar(self)
 
@@ -53,8 +56,13 @@ class App(tk.Tk):
             self.autoType.text = self.settingsConfig.getSettings()
             self.autoType.type = True
             self.autoType.send_keys()
+            # testing hide
+            self.autoMouse.hide()
+            self.autoType.show()
         elif mode == 2:
             # auto mouse
+            self.autoType.hide()
+            self.autoMouse.show()
             self.autoMouse.move = True
             self.autoMouse.move_mouse()
         self.color_on()
